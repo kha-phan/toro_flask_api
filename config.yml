@@ -1,0 +1,49 @@
+databases:
+  db_vendor: mysql # use "mongo" for mongo database
+
+  mongo:
+    host: localhost
+    port: 27017
+    db: flask-api
+    username: root
+    password: password
+    auth_src: admin
+    timeout: 3
+
+  mysql:
+  # This section will be passed directly to `create_engine` method.
+  # Please check this for details: https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine
+  # Url must be an RFC-1738-style string
+    url: "mysql://user:password@127.0.0.1:3306/flask"
+    pool_size: 8
+    pool_timeout: 10
+    echo: False
+    hide_parameters: True
+    isolation_level: "REPEATABLE READ"
+    pool_pre_ping: True
+    pool_use_lifo: True
+
+#response_service:
+#  maximum_operators_suggested: 2
+
+affiliate_link:
+  operators_displaying_order: random # or alphabetical
+  affiliate_links_displaying_mode: eligible # all
+
+license_service:
+  request_timeout: 3
+  default_grace_time: 5
+  time_format:
+  - "%Y-%m-%dT%H:%M:%SZ"
+  - "%Y-%m-%dT%H:%M:%S"
+  event_key: "license_refresh_event"
+  fetch_at_startup: on
+  lock_key: "license_fetching_lock"
+  refresher_max_workers:
+  refresher_sleep_time: 60
+
+redis:
+  host: localhost
+  port: 6379
+  db: 0
+  password: redis-password
