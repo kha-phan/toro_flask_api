@@ -3,8 +3,7 @@ from datetime import datetime
 
 from flask import Flask
 
-from resources import ConfigResource, OperatorResource, LicenseResource, ResponseResource, BoundaryResource, \
-                      AffiliateLinkResource, FaqResource
+from api_configurations import EmployeeApi, StoreApi
 from definitions import version_prefix
 from utils import custom_api, config
 
@@ -55,9 +54,8 @@ def ready_check():
                }
            }, 200 if ready else 500
 
-api.add_resource(BoundaryResource, f'{version_prefix}/boundaries')
-api.add_resource(LicenseResource, f'{version_prefix}/license')
-api.add_resource(ResponseResource, f'{version_prefix}/response')
+api.add_resource(EmployeeApi, f'{version_prefix}/boundaries')
+api.add_resource(StoreApi, f'{version_prefix}/license')
 
 if config.get('license_service.fetch_at_startup'):
     from utils.tasks import prepare_to_fetch_licenses
