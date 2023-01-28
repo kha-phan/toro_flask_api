@@ -4,17 +4,15 @@ databases:
   mongo:
     host: localhost
     port: 27017
-    db: flask-api
+    db: toro-flask-api
     username: root
     password: password
     auth_src: admin
     timeout: 3
 
   mysql:
-  # This section will be passed directly to `create_engine` method.
-  # Please check this for details: https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine
   # Url must be an RFC-1738-style string
-    url: "mysql://user:password@127.0.0.1:3306/flask"
+    url: "mysql://user:password@127.0.0.1:3306/toro-flask-api"
     pool_size: 8
     pool_timeout: 10
     echo: False
@@ -22,13 +20,6 @@ databases:
     isolation_level: "REPEATABLE READ"
     pool_pre_ping: True
     pool_use_lifo: True
-
-#response_service:
-#  maximum_operators_suggested: 2
-
-affiliate_link:
-  operators_displaying_order: random # or alphabetical
-  affiliate_links_displaying_mode: eligible # all
 
 license_service:
   request_timeout: 3
