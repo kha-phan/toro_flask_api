@@ -4,14 +4,13 @@ from datetime import datetime
 from flask import Flask
 
 from api_configurations import EmployeeApi, StoreApi
-from definitions import version_prefix
+from utils.definition import version_prefix
 from utils import custom_api, config
 
 
 app = Flask('flask')
 app.executor = ThreadPoolExecutor(max_workers=5)
 
-# use these separators for minimal response size
 if not app.debug:
     app.config['RESTFUL_JSON'] = {
         'separators': (',', ':')
@@ -22,7 +21,7 @@ api = custom_api.CustomApi(app)
 
 @app.route('/')
 def home():
-    return "Welcome to BetFinder API"
+    return "Welcome to Toro app"
 
 
 @app.route('/health/live')
@@ -32,8 +31,8 @@ def live_check():
 
 @app.route('/health/ready')
 def ready_check():
-    from utils.redis_client import check_redis
-    from databases.database import Database
+    from module.redis.redis_client import check_redis
+    from module.databases.database import Database
     services = {
         'redis': check_redis,
         'db': Database().check
@@ -54,10 +53,11 @@ def ready_check():
                }
            }, 200 if ready else 500
 
+
 api.add_resource(EmployeeApi, f'{version_prefix}/boundaries')
 api.add_resource(StoreApi, f'{version_prefix}/license')
 
-if config.get('license_service.fetch_at_startup'):
-    from utils.tasks import prepare_to_fetch_licenses
-
-    app.executor.submit(prepare_to_fetch_licenses)
+# if config.get('license_service.fetch_at_startup'):
+#     from utils.tasks import prepare_to_fetch_licenses
+#
+#     app.executor.submit(prepare_to_fetch_licenses)
