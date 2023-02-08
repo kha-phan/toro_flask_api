@@ -2,7 +2,7 @@ from flask_restful import Api
 from werkzeug.exceptions import HTTPException, BadRequest, BadRequestKeyError
 
 from . import logger
-from exception import CustomException, BadRequest as CustomBadRequest
+from .exception import CustomException, BadRequest as CustomBadRequest
 
 
 class CustomApi(Api):

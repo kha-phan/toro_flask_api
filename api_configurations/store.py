@@ -13,4 +13,4 @@ parser.add_argument('employee_id', type=str, required=True, location='args')
 
 class StoreApi(Resource):
     def get(self):
-        return
+        return {}, 200

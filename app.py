@@ -54,8 +54,8 @@ def ready_check():
            }, 200 if ready else 500
 
 
-api.add_resource(EmployeeApi, f'{version_prefix}/boundaries')
-api.add_resource(StoreApi, f'{version_prefix}/license')
+api.add_resource(EmployeeApi, f'{version_prefix}/employee')
+api.add_resource(StoreApi, f'{version_prefix}/store')
 
 # if config.get('license_service.fetch_at_startup'):
 #     from utils.tasks import prepare_to_fetch_licenses

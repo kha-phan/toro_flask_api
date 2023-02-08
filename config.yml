@@ -12,7 +12,7 @@ databases:
 
   mysql:
   # Url must be an RFC-1738-style string
-    url: "mysql://user:password@127.0.0.1:3306/toro-flask-api"
+    url: "mysql://user:password@127.0.0.1:3306/toro_flask_api"
     pool_size: 8
     pool_timeout: 10
     echo: False

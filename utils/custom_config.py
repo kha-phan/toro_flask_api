@@ -3,7 +3,7 @@ import yaml
 from typing import Any
 
 from .logger import logger
-from definition import ROOT_DIR
+from .definition import ROOT_DIR
 
 
 CONFIG_FILE_PATH = os.environ.get('CONFIG_FILE_PATH', os.path.join(ROOT_DIR, 'config.yml'))
