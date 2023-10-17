@@ -23,7 +23,7 @@ redis==3.5.2
 requests==2.26.0
 SQLAlchemy==1.4.23
 six==1.16.0
-urllib3==1.25.9
+urllib3==1.26.18
 Werkzeug==1.0.1
 zope.event==4.4
 zope.interface==5.1.0
